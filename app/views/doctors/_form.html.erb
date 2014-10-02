@@ -1,15 +1,4 @@
 <%= form_for(@doctor) do |f| %>
-  <% if @doctor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
-
-      <ul>
-      <% @doctor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= f.label :first_name %><br>
@@ -21,7 +10,7 @@
   </div>
   <div class="field">
     <%= f.label :speciality %><br>
-    <%= f.text_field :speciality %>
+    <%= f.select :speciality, options_for_select(["Primary Care - Family Medicine", "Primary Care - Internal Medicine", "Hospitalist", "Surgeon", "Cardiologist", "Dermatologist", "Endocrinologist", "Gastroenterologist", "Infectious Disease", "Nephrologist", "Ophthalmologist", "Obstetrician/Gynecologist", "Otolaryngologist", "Pediatrician", "Pulmonologist", "Psychiatrist"]), :selected => params[:specialty] %>
   </div>
   <div class="field">
     <%= f.label :phone_number %><br>

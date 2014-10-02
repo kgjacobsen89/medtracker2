@@ -1,15 +1,4 @@
 <%= form_for(@patient) do |f| %>
-  <% if @patient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
-
-      <ul>
-      <% @patient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= f.label :first_name %><br>
@@ -25,15 +14,18 @@
   </div>
   <div class="field">
     <%= f.label :sex %><br>
-    <%= f.text_field :sex %>
+    <%= f.select :sex, options_for_select(["Male", "Female", "TransMale/Transman", "TransFemale/Transwoman", "Genderqueer", "Decline to State"]), :selected => params[:sex] %>
   </div>
   <div class="field">
     <%= f.label :date_of_birth %><br>
     <%= f.date_select :date_of_birth %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.label :blood_type %><br>
+    <%= f.select :blood_type, options_for_select(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-", "Unknown"]), :selected => params[:blood_type] %>
+  <div class="field">
+    <%= f.label "Doctors" %><br>
+    <%= f.collection_select(:doctor_ids, Doctor.all, :id, :last_name, {:prompt => "Please select your doctors"}, {:multiple => true}) %>
   </div>
   <div class="actions">
     <%= f.submit %>
