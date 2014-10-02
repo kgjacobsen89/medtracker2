@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dosage:</strong>
+  <%= @patient_medication.dosage %>
+</p>
+
+<p>
+  <strong>Periodicity:</strong>
+  <%= @patient_medication.periodicity %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @patient_medication.duration %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @patient_medication.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @patient_medication.end_date %>
+</p>
+
+<p>
+  <strong>Instruction:</strong>
+  <%= @patient_medication.instruction %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @patient_medication.patient %>
+</p>
+
+<p>
+  <strong>Medication:</strong>
+  <%= @patient_medication.medication %>
+</p>
+
+<%= link_to 'Edit', edit_patient_medication_path(@patient_medication) %> |
+<%= link_to 'Back', patient_medications_path %>

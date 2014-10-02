@@ -1,0 +1,39 @@
+<h1>Listing patient_medications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dosage</th>
+      <th>Periodicity</th>
+      <th>Duration</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Instruction</th>
+      <th>Patient</th>
+      <th>Medication</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @patient_medications.each do |patient_medication| %>
+      <tr>
+        <td><%= patient_medication.dosage %></td>
+        <td><%= patient_medication.periodicity %></td>
+        <td><%= patient_medication.duration %></td>
+        <td><%= patient_medication.start_date %></td>
+        <td><%= patient_medication.end_date %></td>
+        <td><%= patient_medication.instruction %></td>
+        <td><%= patient_medication.patient %></td>
+        <td><%= patient_medication.medication %></td>
+        <td><%= link_to 'Show', patient_medication %></td>
+        <td><%= link_to 'Edit', edit_patient_medication_path(patient_medication) %></td>
+        <td><%= link_to 'Destroy', patient_medication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Patient medication', new_patient_medication_path %>
