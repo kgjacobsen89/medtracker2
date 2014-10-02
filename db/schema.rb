@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20141001224312) do
     t.string   "phone_number"
     t.string   "sex"
     t.date     "date_of_birth"
+    t.string   "blood_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,8 +74,7 @@ ActiveRecord::Schema.define(version: 20141001224312) do
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "email"
-    t.string   "password"
-    t.string   "password_confirmation"
+    t.string   "password_digest"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
