@@ -17,7 +17,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :blood_type
 
       # doc stuff
-      t.string :speciality
+      t.string :specialty
       t.string :city
       t.timestamps
     end

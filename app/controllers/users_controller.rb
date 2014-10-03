@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @is_signup = true
   end
 
  def create
@@ -45,6 +44,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :type, :password, :password_confirmation, :first_name, :last_name, :phone_number, :sex, :date_of_birth, :blood_type, :speciality, :city)
+    params.require(:user).permit(:username, :email, :type, :password, :password_confirmation, :first_name, :last_name, :phone_number, :sex, :date_of_birth, :blood_type, :specialty, :city)
   end
 end
