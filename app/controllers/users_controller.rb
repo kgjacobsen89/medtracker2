@@ -6,19 +6,33 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @is_signup = true
   end
 
  def create
-    if params[:user_type] == 'Patient'
+    if params[:form_tag] == 'Patient'
       @user = Patient.new(user_params)
         session[:user_id] = @user.id.to_s if @user.save
         redirect_to new_patient_path(patient_id: @user.id)
-    elsif params[:user_type] == 'Doctor'
+    elsif params[:form_tag] == 'Doctor'
       @user = Doctor.new(user_params)
         session[:user_id] = @user.id.to_s if @user.save
         redirect_to new_doctor_path(doctor_id: @user.id)
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to user_path
+    else 
+      render 'edit'
     end
   end
 
@@ -31,6 +45,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :type, :password, :password_confirmation, :first_name, :last_name, :phone_number, :sex, :date_of_birth, :blood_type, :speciality, :city)
   end
 end

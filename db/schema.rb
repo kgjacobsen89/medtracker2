@@ -17,11 +17,6 @@ ActiveRecord::Schema.define(version: 20141001224312) do
   enable_extension "plpgsql"
 
   create_table "doctors", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "speciality"
-    t.string   "phone_number"
-    t.string   "city"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,22 +55,19 @@ ActiveRecord::Schema.define(version: 20141001224312) do
   add_index "patient_medications", ["medication_id"], name: "index_patient_medications_on_medication_id", using: :btree
   add_index "patient_medications", ["patient_id"], name: "index_patient_medications_on_patient_id", using: :btree
 
-  create_table "patients", force: true do |t|
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "type"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
     t.string   "sex"
     t.date     "date_of_birth"
     t.string   "blood_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "type"
+    t.string   "speciality"
+    t.string   "city"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

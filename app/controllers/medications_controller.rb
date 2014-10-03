@@ -1,6 +1,7 @@
 class MedicationsController < ApplicationController
 
   def index
+    @dailymeds = HTTParty.get("http://dailymed.nlm.nih.gov/dailymed/services/v2/drugnames.json")
     @medications = Medication.all
   end
 

@@ -1,5 +1,13 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user do |f| %>
 
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
   <div class="field">
     <%= f.label :username %><br>
     <%= f.text_field :username %>
@@ -7,6 +15,10 @@
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
   </div>
   <div class="field">
     <%= f.label :password %><br>
@@ -18,8 +30,38 @@
   </div>
   <div class="field">
     <%= f.label :type %><br>
-    <%= f.select :type, options_for_select(["Patient", "Doctor"]) %>
+    <%= select_tag "form_tag", options_for_select(["Patient", "Doctor"]) %>
   </div>
+
+  <% if @user.type == 'Patient' %>
+  <div class="field">
+    <%= f.label :sex %><br>
+    <%= f.select :sex, options_for_select(["Male", "Female", "TransMale/Transman", "TransFemale/Transwoman", "Genderqueer", "Decline to State"]), :selected => params[:sex] %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_birth %><br>
+    <%= f.date_select :date_of_birth %>
+  </div>
+  <div class="field">
+    <%= f.label :blood_type %><br>
+    <%= f.select :blood_type, options_for_select(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-", "Unknown"]), :selected => params[:blood_type] %>
+  <div class="field">
+    <%= f.label "Doctors" %><br>
+    <%= f.collection_select(:doctor_ids, Doctor.all, :id, :last_name, {:prompt => "Please select your doctors"}, {:multiple => true}) %>
+  </div>
+  <% end %>
+
+  <% if @user.type == 'Doctor' %>
+  <div class="field">
+    <%= f.label :speciality %><br>
+    <%= f.select :speciality, options_for_select(["Primary Care - Family Medicine", "Primary Care - Internal Medicine", "Hospitalist", "Surgeon", "Cardiologist", "Dermatologist", "Endocrinologist", "Gastroenterologist", "Infectious Disease", "Nephrologist", "Ophthalmologist", "Obstetrician/Gynecologist", "Otolaryngologist", "Pediatrician", "Pulmonologist", "Psychiatrist"]), :selected => params[:specialty] %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city  %>
+  </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

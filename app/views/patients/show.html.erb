@@ -1,34 +1,41 @@
-<p id="notice"><%= notice %></p>
+<h1> <%= @patient.first_name %> <%= @patient.last_name %> </h1>
 
-<p>
-  <strong>First name:</strong>
-  <%= @patient.first_name %>
-</p>
+<h2> Patient Information </h2>
+Sex: <%= @patient.sex %> <br />
+Date of Birth: <%= @patient.date_of_birth%> <br / >
+Blood Type: <%= @patient.blood_type %> <br />
 
-<p>
-  <strong>Last name:</strong>
-  <%= @patient.last_name %>
-</p>
+<h2> Patient's Selected Doctors </h2>
+<ul>
+  <% @doctors.each do |d| %>
+  <li>
+    <strong> Dr. <%= d.first_name %> <%= d.last_name %> </strong>
+    <i><%= link_to "Doctor Profile", doctor_path(d) %></i>
+  </li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @patient.phone_number %>
-</p>
+<h2> Patient's Medications </h2>
+<%= link_to "Add New Medication", new_medication_path %> <br />
+<ul>
+  <% @patient.medications.each do |m| %>
+  <li>
+    <strong> <%= m.name %> </strong> <br />
+    <%= link_to "More Medication Info", medication_path(m) %> <br />
+    <%= m.dosage %><br>
+    <%= m.periodicity %> <br>
+    <%= m.duration %> <br>
+    <%= m.instruction %> <br>
+    <%= m.start_date %> <br>
+    <%= m.end_date %> <br>
+    <%= m.doctor_id %> <br>
+  </li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Sex:</strong>
-  <%= @patient.sex %>
-</p>
-
-<p>
-  <strong>Date of birth:</strong>
-  <%= @patient.date_of_birth %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @patient.user %>
-</p>
+<h3> Contact Information </h3>
+Phone: <%= @patient.phone_number %> <br />
+Email: <%= @patient.email %><br />
 
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
 <%= link_to 'Back', patients_path %>

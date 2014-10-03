@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @doctor.first_name %> <%= @doctor.last_name %></h1>
 
-<p>
-  <strong>First name:</strong>
-  <%= @doctor.first_name %>
-</p>
+<h2> Doctor Information </h2>
+Specialization: <%= @doctor.specialty %> <br />
+Practice Location: <%= @doctor.city %> <br / >
 
-<p>
-  <strong>Last name:</strong>
-  <%= @doctor.last_name %>
-</p>
+<h2> Patients </h2>
+<ul>
+  <% @doctor.patients.each do |p| %>
+  <li>
+    <strong> <%= p.first_name %> <%= p.last_name %></strong> 
+    <%= link_to "More Patient Information", patient_path(p) %>
+  </li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Speciality:</strong>
-  <%= @doctor.speciality %>
-</p>
+<h2> Prescriptions </h2>
+<ul> 
+  <% @doctor.patient_medications.each do |m| %>
+  <li>
+    <strong> <%= m.medication.name %> </strong>
+    <%= link_to "More Medication Information", medication_path(m) %>
+  </li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @doctor.phone_number %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @doctor.city %>
-</p>
+<h3> Contact Information </h3>
+Phone Number: <%= @doctor.phone_number %> <br />
+Email: <%= @doctor.email %> <br />
 
 <%= link_to 'Edit', edit_doctor_path(@doctor) %> |
 <%= link_to 'Back', doctors_path %>
