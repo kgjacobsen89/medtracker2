@@ -26,7 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :doctor_id %><br>
-    <%= f.collection_select(:doctor_ids, Doctor.find(@patient.doctor_ids), :id, :last_name, {:prompt => "Please select a doctor"}) %>  
+    <%= f.collection_select(:doctor_id, Doctor.find(@patient.doctor_ids), :id, :last_name, {:prompt => "Please select a doctor"}) %>  
   </div>
   <div class="field">
     <%= f.hidden_field :patient_id, value: current_user.id %>

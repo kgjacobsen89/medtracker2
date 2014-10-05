@@ -9,6 +9,7 @@ class PatientMedicationsController < ApplicationController
   end
 
   def new
+    @patient = Patient.find(session[:user_id])
     @patient_medication = PatientMedication.new
   end
 
@@ -17,9 +18,10 @@ class PatientMedicationsController < ApplicationController
   end
 
   def create
+    @patient = Patient.find(session[:user_id])
     @patient_medication = PatientMedication.new(patient_medication_params)
     if @patient_medication.save
-      redirect_to patient_path
+      redirect_to patient_path(@patient.id)
     else
       render 'new'
     end
@@ -28,7 +30,7 @@ class PatientMedicationsController < ApplicationController
   def update
     @patient_medication = PatientMedication.find(params[:id])
     if @patient_medication.update_attributes(patient_medication_params)
-      redirect_to patient_path
+      redirect_to patient_path(@patient.id)
     else
       render 'edit'
     end
@@ -36,7 +38,7 @@ class PatientMedicationsController < ApplicationController
 
   def destroy
     PatientMedication.find(params[:id]).destroy
-    redirect_to patient_path
+    redirect_to patient_path(@patient.id)
   end
 
   private

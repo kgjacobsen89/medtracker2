@@ -2,7 +2,7 @@
 
 <h2> Patient Information </h2>
 Sex: <%= @patient.sex %> <br />
-Date of Birth: <%= @patient.date_of_birth%> <br / >
+Date of Birth: <%= @patient.date_of_birth %> <br / >
 Blood Type: <%= @patient.blood_type %> <br />
 
 <h2> Patient's Selected Doctors </h2>
@@ -18,7 +18,7 @@ Blood Type: <%= @patient.blood_type %> <br />
 <h2> Patient's Medications </h2>
 <%= link_to "Add New Medication", new_medication_path %> <br />
 <ul>
-  <% @patient.medications.each do |m| %>
+  <% @medications.each do |m| %>
   <li>
     <strong> <%= m.name %> </strong> <br />
     <%= link_to "More Medication Info", medication_path(m) %> <br />
