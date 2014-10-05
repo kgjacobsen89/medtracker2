@@ -1,7 +1,6 @@
 class MedicationsController < ApplicationController
 
   def index
-    @dailymeds = HTTParty.get("http://dailymed.nlm.nih.gov/dailymed/services/v2/drugnames.json")
     @medications = Medication.all
   end
 
@@ -15,9 +14,9 @@ class MedicationsController < ApplicationController
   end
 
   def create
-    @medication = PatientMedication.new(medication_params)
+    @medication = Medication.new(medication_params)
     if @medication.save 
-      redirect_to new_user_patient_medication_path(patient_medication_id: @medication.id)
+      redirect_to new_patient_medication_path(medication_id: @medication.id)
     else 
       render 'new' 
     end  
@@ -25,7 +24,7 @@ class MedicationsController < ApplicationController
 
   def destroy
     @medication = Medication.find(params[:id]).destroy 
-    redirect_to user_medications_path(@user.id)
+    redirect_to medications_path
   end
 
   private
