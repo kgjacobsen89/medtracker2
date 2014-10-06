@@ -10,6 +10,7 @@ class PatientMedicationsController < ApplicationController
 
   def new
     @patient = Patient.find(session[:user_id])
+    @medications = Medication.find(@patient.medication_ids)
     @patient_medication = PatientMedication.new
   end
 
@@ -28,6 +29,7 @@ class PatientMedicationsController < ApplicationController
   end
 
   def update
+    @patient = Patient.find(session[:user_id])
     @patient_medication = PatientMedication.find(params[:id])
     if @patient_medication.update_attributes(patient_medication_params)
       redirect_to patient_path(@patient.id)

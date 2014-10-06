@@ -16,7 +16,7 @@ class MedicationsController < ApplicationController
   def create
     @medication = Medication.new(medication_params)
     if @medication.save 
-      redirect_to new_patient_medication_path(medication_id: @medication.id)
+      redirect_to new_patient_medication_path
     else 
       render 'new' 
     end  

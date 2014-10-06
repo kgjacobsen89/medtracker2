@@ -1,6 +1,15 @@
 <%= form_for(@patient_medication) do |f| %>
 
   <div class="field">
+    <%= f.label :doctor_id %><br>
+    <%= f.collection_select(:doctor_id, Doctor.find(@patient.doctor_ids), :id, :last_name, {:prompt => "Please select a doctor"}) %>  
+  </div>
+
+  <div class="field">
+    <%= f.label :medication_id %><br>
+    <%= f.collection_select(:medication_id, Medication.all, :id, :name, {:prompt => "Please select a medication"}) %>  
+  </div>
+  <div class="field">
     <%= f.label :dosage %><br>
     <%= f.number_field :dosage %>
   </div>
@@ -23,10 +32,6 @@
   <div class="field">
     <%= f.label :instruction %><br>
     <%= f.text_field :instruction %>
-  </div>
-  <div class="field">
-    <%= f.label :doctor_id %><br>
-    <%= f.collection_select(:doctor_id, Doctor.find(@patient.doctor_ids), :id, :last_name, {:prompt => "Please select a doctor"}) %>  
   </div>
   <div class="field">
     <%= f.hidden_field :patient_id, value: current_user.id %>
