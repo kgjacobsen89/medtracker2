@@ -38,9 +38,12 @@ ActiveRecord::Schema.define(version: 20141001224312) do
   add_index "patient_doctors", ["patient_id"], name: "index_patient_doctors_on_patient_id", using: :btree
 
   create_table "patient_medications", force: true do |t|
-    t.integer  "dosage"
+    t.float    "dosage"
+    t.string   "dosage_unit"
     t.integer  "periodicity"
+    t.string   "periodicity_unit"
     t.integer  "duration"
+    t.string   "duration_unit"
     t.date     "start_date"
     t.date     "end_date"
     t.string   "instruction"

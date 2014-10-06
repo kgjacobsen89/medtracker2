@@ -11,6 +11,8 @@ class MedicationsController < ApplicationController
   def new
     @medication = Medication.new
     @patient = Patient.find(session[:user_id])
+    
+
   end
 
   def create

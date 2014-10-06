@@ -6,4 +6,12 @@ class Doctor < User
 
 	accepts_nested_attributes_for :patient_doctors
 	accepts_nested_attributes_for :patient_medications 
+
+	def name
+		if specialty
+			"Dr. #{first_name} #{last_name}, #{specialty}"
+		else
+			"Dr. #{first_name} #{last_name}"
+		end
+	end
 end

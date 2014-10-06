@@ -2,24 +2,24 @@
 
   <div class="field">
     <%= f.label :doctor_id %><br>
-    <%= f.collection_select(:doctor_id, Doctor.find(@patient.doctor_ids), :id, :last_name, {:prompt => "Please select a doctor"}) %>  
+    <%= f.collection_select(:doctor_id, Doctor.order("last_name ASC", "first_name ASC", "specialty ASC").find(@patient.doctor_ids), :id, :name, {:prompt => "Please select a doctor"}) %>  
   </div>
 
   <div class="field">
     <%= f.label :medication_id %><br>
-    <%= f.collection_select(:medication_id, Medication.all, :id, :name, {:prompt => "Please select a medication"}) %>  
+    <%= f.collection_select(:medication_id, Medication.order('name ASC'), :id, :cap_name, {:prompt => "Please select a medication"}) %>  
   </div>
   <div class="field">
     <%= f.label :dosage %><br>
-    <%= f.number_field :dosage %>
+    <%= f.number_field :dosage %> <%= f.select :dosage_unit, options_for_select(["g", "mg", "cc", "puff(s)", "mL", "tbsp", "tsp", "oz", "IU","drop(s)"]), :selected => params[:dosage_unit] %>
   </div>
   <div class="field">
     <%= f.label :periodicity %><br>
-    <%= f.number_field :periodicity %>
+    <%= f.number_field :periodicity %> <%= f.select :periodicity_unit, options_for_select(["daily", "every other day", "weekly", "every other week", "monthly"]), :selected => params[:periodicity_unit] %>
   </div>
   <div class="field">
     <%= f.label :duration %><br>
-    <%= f.number_field :duration %>
+    <%= f.number_field :duration %> <%= f.select :duration_unit, options_for_select(["day(s)", "week(s)", "month(s)", "year(s)"]), :selected => params[:duration_unit] %>
   </div>
   <div class="field">
     <%= f.label :start_date %><br>

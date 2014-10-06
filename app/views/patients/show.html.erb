@@ -21,13 +21,13 @@ Blood Type: <%= @patient.blood_type %> <br />
   <% @medications.each do |m| %>
   <li>
     <% med = m.medication %>
-    <strong> <%= med.name%> </strong>
+    <strong> <%= med.name.capitalize%> </strong>
     <%= link_to "More Medication Info", medication_path(m) %> <br />
     <% doc = m.doctor %>
     <%= doc.last_name %> <br>
-    <%= m.dosage %><br>
-    <%= m.periodicity %> <br>
-    <%= m.duration %> <br>
+    <%= m.dosage %> <%= m.dosage_unit %><br>
+    <%= m.periodicity %> <%= m.periodicity_unit %> <br>
+    <%= m.duration %> <%= m.duration_unit %> <br>
     <%= m.instruction %> <br>
     <%= m.start_date %> <br>
     <%= m.end_date %> <br>

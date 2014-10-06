@@ -25,7 +25,7 @@
     <%= f.select :blood_type, options_for_select(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-", "Unknown"]), :selected => params[:blood_type] %>
   <div class="field">
     <%= f.label "Doctors" %><br>
-    <%= f.collection_select(:doctor_ids, Doctor.all, :id, :last_name, {:prompt => "Please select your doctors"}, {:multiple => true}) %>
+    <%= f.collection_select(:doctor_ids, Doctor.order("last_name ASC", "first_name ASC", "specialty ASC"), :id, :name, {:prompt => "Please select your doctors"}, {:multiple => true}) %>
   </div>
   <div class="actions">
     <%= f.submit %>
