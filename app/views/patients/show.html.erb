@@ -6,6 +6,7 @@ Date of Birth: <%= @patient.date_of_birth %> <br / >
 Blood Type: <%= @patient.blood_type %> <br />
 
 <h2> Patient's Selected Doctors </h2>
+<%= link_to "Add New Doctor", new_patient_doctor_path %>
 <ul>
   <% @doctors.each do |d| %>
   <li>
@@ -21,7 +22,7 @@ Blood Type: <%= @patient.blood_type %> <br />
   <% @medications.each do |m| %>
   <li>
     <% med = m.medication %>
-    <strong> <%= med.name.capitalize%> </strong>
+    <strong> <%= med.name.capitalize %> </strong>
     <%= link_to "More Medication Info", medication_path(m) %> <br />
     <% doc = m.doctor %>
     <%= doc.last_name %> <br>
@@ -29,8 +30,11 @@ Blood Type: <%= @patient.blood_type %> <br />
     <%= m.periodicity %> <%= m.periodicity_unit %> <br>
     <%= m.duration %> <%= m.duration_unit %> <br>
     <%= m.instruction %> <br>
-    <%= m.start_date %> <br>
-    <%= m.end_date %> <br>
+    <% if m.ongoing == false %>
+      <%= m.start_date %> <br>
+      <%= m.end_date %> <br>
+    <% end %>
+    <%= link_to "Edit Medication", edit_patient_medication_path(m) %>
   </li>
   <% end %>
 </ul>

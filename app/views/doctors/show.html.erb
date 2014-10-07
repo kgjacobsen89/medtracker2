@@ -18,7 +18,7 @@ City of Practice: <%= @doctor.city %> <br / >
 <ul> 
   <% @doctor.patient_medications.each do |m| %>
   <li>
-    <strong> <%= m.medication.name %> </strong>
+    <strong> <%= m.medication.name.capitalize %> </strong>
     <%= link_to "More Medication Information", medication_path(m) %>
   </li>
   <% end %>

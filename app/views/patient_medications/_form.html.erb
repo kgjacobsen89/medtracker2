@@ -21,14 +21,20 @@
     <%= f.label :duration %><br>
     <%= f.number_field :duration %> <%= f.select :duration_unit, options_for_select(["day(s)", "week(s)", "month(s)", "year(s)"]), :selected => params[:duration_unit] %>
   </div>
+
   <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
+    <%= f.label :ongoing %><br>
+    <%= f.check_box :ongoing %>
   </div>
-  <div class="field">
+  <div id="haha">
+    <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %><br>
     <%= f.label :end_date %><br>
     <%= f.date_select :end_date %>
   </div>
+  </div>
+  
   <div class="field">
     <%= f.label :instruction %><br>
     <%= f.text_field :instruction %>
@@ -39,4 +45,20 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
+
+<script>
+  $("#patient_medication_ongoing").on("change", function(){
+    doShowHide(this);
+  });
+  function doShowHide(cb){
+    if(cb.checked)
+      $("#haha").hide();
+    else
+      $("#haha").show();
+  }
+
+  // When the page loads, calculate if it should show or hide.
+  doShowHide($("#patient_medication_ongoing")[0]);
+</script>

@@ -11,10 +11,12 @@ class PatientMedicationsController < ApplicationController
   def new
     @patient = Patient.find(session[:user_id])
     @medications = Medication.find(@patient.medication_ids)
-    @patient_medication = PatientMedication.new
+    @patient_medication = PatientMedication.new(ongoing: true)
   end
 
   def edit
+    @patient = Patient.find(session[:user_id])
+    @medications = Medication.find(@patient.medication_ids)
     @patient_medication = PatientMedication.find(params[:id])
   end
 
@@ -46,6 +48,6 @@ class PatientMedicationsController < ApplicationController
   private
 
     def patient_medication_params
-      params.require(:patient_medication).permit(:dosage, :dosage_unit, :periodicity, :periodicity_unit, :duration, :duration_unit, :start_date, :end_date, :instruction, :patient_id, :medication_id, :doctor_id)
+      params.require(:patient_medication).permit(:dosage, :dosage_unit, :periodicity, :periodicity_unit, :duration, :duration_unit, :ongoing, :start_date, :end_date, :instruction, :patient_id, :medication_id, :doctor_id)
     end
 end

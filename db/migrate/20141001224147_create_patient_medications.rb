@@ -7,6 +7,7 @@ class CreatePatientMedications < ActiveRecord::Migration
       t.string :periodicity_unit
       t.integer :duration
       t.string :duration_unit
+      t.boolean :ongoing
       t.date :start_date
       t.date :end_date
       t.string :instruction

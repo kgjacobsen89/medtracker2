@@ -1,25 +1,14 @@
-<%= form_for(@patient_doctor) do |f| %>
-  <% if @patient_doctor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@patient_doctor.errors.count, "error") %> prohibited this patient_doctor from being saved:</h2>
-
-      <ul>
-      <% @patient_doctor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@patient) do |f| %>
 
   <div class="field">
-    <%= f.label :patient_id %><br>
-    <%= f.text_field :patient_id %>
+    <%= f.label "Doctors" %><br>
+    <%= f.collection_select(:doctor_ids, Doctor.order("last_name ASC", "first_name ASC", "specialty ASC"), :id, :name, {:prompt => "Please select your doctors"}, {:multiple => true}) %>
   </div>
   <div class="field">
-    <%= f.label :doctor_id %><br>
-    <%= f.text_field :doctor_id %>
+    <%= f.hidden_field :patient_id, value: current_user.id %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
