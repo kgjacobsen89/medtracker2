@@ -2,7 +2,13 @@
 
   <div class="field">
     <%= f.label "Doctors" %><br>
-    <%= f.collection_select(:doctor_ids, Doctor.order("last_name ASC", "first_name ASC", "specialty ASC"), :id, :name, {:prompt => "Please select your doctors"}, {:multiple => true}) %>
+    <%= f.collection_check_boxes(:doctor_ids, Doctor.order("last_name ASC", "first_name ASC", "specialty ASC"), :id, :name) do |b| %>
+      
+      <%= b.label { b.check_box } %>
+      <%= b.label { b.text } %>
+      <br>
+    <% end %>
+
   </div>
   <div class="field">
     <%= f.hidden_field :patient_id, value: current_user.id %>
@@ -10,5 +16,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-
+<br>
 <% end %>

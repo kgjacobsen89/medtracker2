@@ -14,7 +14,7 @@
   </div>
   <div class="field">
     <%= f.label :sex %><br>
-    <%= f.select :sex, options_for_select(["Male", "Female", "TransMale/Transman", "TransFemale/Transwoman", "Genderqueer", "Decline to State"]), :selected => params[:sex] %>
+    <%= f.select :sex, options_for_select(["Male", "Female", "TransMale/Transman", "TransFemale/Transwoman", "Genderqueer", "Decline to State"], :selected => @patient.sex) %>
   </div>
   <div class="field">
     <%= f.label :date_of_birth %><br>
@@ -22,7 +22,7 @@
   </div>
   <div class="field">
     <%= f.label :blood_type %><br>
-    <%= f.select :blood_type, options_for_select(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-", "Unknown"]), :selected => params[:blood_type] %>
+    <%= f.select :blood_type, options_for_select(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-", "Unknown"], :selected => @patient.blood_type) %>
   </div>
   <div class="actions">
     <%= f.submit %>

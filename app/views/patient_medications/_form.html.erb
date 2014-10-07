@@ -11,15 +11,15 @@
   </div>
   <div class="field">
     <%= f.label :dosage %><br>
-    <%= f.number_field :dosage %> <%= f.select :dosage_unit, options_for_select(["g", "mg", "cc", "puff(s)", "mL", "tbsp", "tsp", "oz", "IU","drop(s)"]), :selected => params[:dosage_unit] %>
+    <%= f.number_field :dosage %> <%= f.select :dosage_unit, options_for_select(["g", "mg", "cc", "puff(s)", "mL", "tbsp", "tsp", "oz", "IU","drop(s)"], :selected => @patient_medication.dosage_unit) %>
   </div>
   <div class="field">
     <%= f.label :periodicity %><br>
-    <%= f.number_field :periodicity %> <%= f.select :periodicity_unit, options_for_select(["daily", "every other day", "weekly", "every other week", "monthly"]), :selected => params[:periodicity_unit] %>
+    <%= f.number_field :periodicity %> <%= f.select :periodicity_unit, options_for_select(["daily", "every other day", "weekly", "every other week", "monthly"], :selected => @patient_medication.periodicity_unit) %>
   </div>
   <div class="field">
     <%= f.label :duration %><br>
-    <%= f.number_field :duration %> <%= f.select :duration_unit, options_for_select(["day(s)", "week(s)", "month(s)", "year(s)"]), :selected => params[:duration_unit] %>
+    <%= f.number_field :duration %> <%= f.select :duration_unit, options_for_select(["day(s)", "week(s)", "month(s)", "year(s)"], :selected => @patient_medication.duration_unit) %>
   </div>
 
   <div class="field">
