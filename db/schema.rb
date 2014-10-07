@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20141001224312) do
     t.datetime "updated_at"
   end
 
+  add_index "medications", ["name"], name: "index_medications_on_name", unique: true, using: :btree
+
   create_table "patient_doctors", force: true do |t|
     t.integer  "patient_id"
     t.integer  "doctor_id"
