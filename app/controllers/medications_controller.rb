@@ -1,7 +1,11 @@
 class MedicationsController < ApplicationController
 
   def index
+    @pillbox = Pillboxr.color(:blue).image(true)
     @medications = Medication.all
+  end
+
+  def search
   end
 
   def show
@@ -12,7 +16,6 @@ class MedicationsController < ApplicationController
     @medication = Medication.new
     @patient = Patient.find(session[:user_id])
     
-
   end
 
   def create
