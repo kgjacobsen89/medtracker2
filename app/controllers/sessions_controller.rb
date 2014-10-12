@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
 	def create
 		# Find the user that is trying to log in		
-		@user = User.where(username: params[:user][:username]).first
+		@user = User.where(email: params[:user][:email]).first
 		if @user && @user.authenticate(params[:user][:password])
 			# Store as a cookie in the users' browser the ID of them,
 			# indicating that they are logged in

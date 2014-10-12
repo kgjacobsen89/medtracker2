@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20141001224312) do
   add_index "patient_medications", ["patient_id"], name: "index_patient_medications_on_patient_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "username"
     t.string   "email"
     t.string   "password_digest"
     t.string   "type"
