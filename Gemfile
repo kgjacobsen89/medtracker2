@@ -35,6 +35,9 @@ gem 'httparty'
 
 gem 'pillboxr'
 
+gem 'figaro'
+gem 'actionmailer', '~> 4.1.5'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

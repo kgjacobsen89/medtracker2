@@ -6,4 +6,8 @@ class Patient < User
 
 	accepts_nested_attributes_for :patient_doctors
 	accepts_nested_attributes_for :patient_medications
+
+	def name
+		"#{first_name} #{last_name}"
+	end
 end
