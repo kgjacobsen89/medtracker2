@@ -1,7 +1,7 @@
 class MedicationsController < ApplicationController
 
   def index
-    @pillbox = Pillboxr.color(:blue).image(true)
+    @pillbox = Pillboxr.ingredient(:caffeine).image(true)
     @medications = Medication.all
   end
 

@@ -1,5 +1,7 @@
 <h1>Listing medications</h1>
-<%= @pillbox %>
+<% @pillbox.each do |m| %>
+  <%= image_tag m %>
+<% end %>
 
 
 <table>
