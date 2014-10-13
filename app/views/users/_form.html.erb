@@ -2,64 +2,18 @@
   <div class="col-md-10 col-offest-md-1">
     <%= bootstrap_form_for @user do |f| %>
 
-        <%= f.text_field :first_name %>
-        <%= f.text_field :last_name %>
-        <%= f.text_field :username %>
-        <%= f.text_field :email %>
-        <%= f.text_field :phone_number %>
-        <%= f.password_field :password %>
-        <%= f.password_field :password_confirmation %>
-        <%= f.label :type %><br>
-        <%= select_tag "form_tag", options_for_select(["Patient", "Doctor"]) %>
+        <%= f.text_field :first_name, placeholder: "ex. Gary", :autofocus => true %>
+        <%= f.text_field :last_name, placeholder: "ex. Jacobsen" %>
+        <%= f.text_field :email, placeholder: "ex. gary@gary.com" %>
+        <%= f.text_field :phone_number, placeholder: "XXX-XXX-XXXX" %>
+        <%= f.password_field :password, placeholder: "password" %>
+        <%= f.password_field :password_confirmation, placeholder: "confirm password" %>
+        <div class="form-group">
+          <label for="user_type">Type</label>
+        <%= select_tag "form_tag", options_for_select(["Patient", "Doctor"]), :class => "form-control", :include_blank => true, :prompt => "Please Select Doctor or Patient" %>
+      </div>
+        <%= f.submit @button_face, :class => "btn btn-primary" %>
 
-      <% if @user.type == 'Patient' %>
-      <div class="field">
-        <%= f.label :sex %><br>
-        <%= f.select :sex, options_for_select(["Male", "Female", "TransMale/Transman", "TransFemale/Transwoman", "Genderqueer", "Decline to State"]), :selected => params[:sex] %>
-      </div>
-      <div class="field">
-        <%= f.label :date_of_birth %><br>
-        <%= f.date_select :date_of_birth %>
-      </div>
-      <div class="field">
-        <%= f.label :blood_type %><br>
-        <%= f.select :blood_type, options_for_select(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-", "Unknown"]), :selected => params[:blood_type] %>
-      <div class="field">
-        <%= f.label "Doctors" %><br>
-        <%= f.collection_select(:doctor_ids, Doctor.all, :id, :last_name, {:prompt => "Please select your doctors"}, {:multiple => true}) %>
-      </div>
-      <% end %>
-
-      <% if @user.type == 'Doctor' %>
-      <div class="field">
-        <%= f.label :speciality %><br>
-        <%= f.select :speciality, options_for_select(["Primary Care - Family Medicine", "Primary Care - Internal Medicine", "Hospitalist", "Surgeon", "Cardiologist", "Dermatologist", "Endocrinologist", "Gastroenterologist", "Infectious Disease", "Nephrologist", "Ophthalmologist", "Obstetrician/Gynecologist", "Otolaryngologist", "Pediatrician", "Pulmonologist", "Psychiatrist"]), :selected => params[:specialty] %>
-      </div>
-      <div class="field">
-        <%= f.label :city %><br>
-        <%= f.text_field :city  %>
-      </div>
-      <% end %>
-
-      <div class="actions">
-        <%= f.submit %>
-      </div>
     <% end %>
-
   </div>
 </div>
-
-<script>
-  $("#patient_medication_ongoing").on("change", function(){
-    doShowHide(this);
-  });
-  function doShowHide(cb){
-    if(cb.checked)
-      $("#haha").hide();
-    else
-      $("#haha").show();
-  }
-
-  // When the page loads, calculate if it should show or hide.
-  doShowHide($("#patient_medication_ongoing")[0]);
-</script>

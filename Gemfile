@@ -8,7 +8,6 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 gem 'bootstrap-generators', '~> 3.2.0'
-gem 'bootstrap-datepicker-rails'
 gem "font-awesome-rails"
 
 # Use postgresql as the database for Active Record
@@ -38,9 +37,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-gem 'pry', group: :development
-gem 'better_errors', group: :development
-gem 'binding_of_caller', group: :development
+# gem 'pry', group: :development
+# gem 'better_errors', group: :development
+# gem 'binding_of_caller', group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 

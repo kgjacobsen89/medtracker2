@@ -1,55 +1,48 @@
-<%= form_for(@patient_medication) do |f| %>
-
-  <div class="field">
-    <%= f.label :doctor_id %><br>
+<%= bootstrap_form_for(@patient_medication) do |f| %>
     <%= f.collection_select(:doctor_id, Doctor.order("last_name ASC", "first_name ASC", "specialty ASC").find(@patient.doctor_ids), :id, :name, {:prompt => "Please select a doctor"}) %>  
-  </div>
+    <%= f.collection_select(:medication_id, Medication.order('name ASC'), :id, :cap_name, {:prompt => "Please select a medication"}) %>
+    <div class="form-group">
+      <label for="patient_medication_dosage">Dosage</label>
+    <div class="form-inline">
 
-  <div class="field">
-    <%= f.label :medication_id %><br>
-    <%= f.collection_select(:medication_id, Medication.order('name ASC'), :id, :cap_name, {:prompt => "Please select a medication"}) %>  
-  </div>
-  <div class="field">
-    <%= f.label :dosage %><br>
-    <%= f.number_field :dosage %> <%= f.select :dosage_unit, options_for_select(["g", "mg", "cc", "puff(s)", "mL", "tbsp", "tsp", "oz", "IU","drop(s)"], :selected => @patient_medication.dosage_unit) %>
-  </div>
-  <div class="field">
-    <%= f.label :periodicity %><br>
-    <%= f.number_field :periodicity %> <%= f.select :periodicity_unit, options_for_select(["daily", "every other day", "weekly", "every other week", "monthly"], :selected => @patient_medication.periodicity_unit) %>
-  </div>
-  <div class="field">
-    <%= f.label :duration %><br>
-    <%= f.number_field :duration %> <%= f.select :duration_unit, options_for_select(["day(s)", "week(s)", "month(s)", "year(s)"], :selected => @patient_medication.duration_unit) %>
-  </div>
+    <%= f.number_field :dosage, hide_label: true %> 
+    <%= f.select :dosage_unit, options_for_select(["g", "mg", "cc", "puff(s)", "mL", "tbsp", "tsp", "oz", "IU","drop(s)"], :selected => @patient_medication.dosage_unit), hide_label: true %>
+    </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :ongoing %><br>
-    <%= f.check_box :ongoing %>
-  </div>
+    <div class="form-group">
+      <label for="patient_medication_periodicity">Periodicity</label>
+    <div class="form-inline"> 
+    <%= f.number_field :periodicity, hide_label: true %> 
+    <%= f.select :periodicity_unit, options_for_select(["daily", "every other day", "weekly", "every other week", "monthly"], :selected => @patient_medication.periodicity_unit), hide_label: true %>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label for="patient_medication_duration">Duration</label>
+      <div class="form-inline">
+    <%= f.number_field :duration, hide_label: true %> 
+    <%= f.select :duration_unit, options_for_select(["day(s)", "week(s)", "month(s)", "year(s)"], :selected => @patient_medication.duration_unit), hide_label: true %>
+    </div>
+    </div>
+
+    <%= f.form_group :ongoing do %>
+    <%= f.check_box :ongoing, label: "Currently Taking", inline: true %>
+    <% end %>
   <div id="dateHide">
-    <div class="field">
-      <%= f.text_field :start_date, 'data-behaviour' => 'datepicker' %>
-      <%= f.text_field :end_date, 'data-behaviour' => 'datepicker' %>
-
-    <%#= f.label :start_date %><br>
-    <%#= f.date_select :start_date %><br>
-    <%#= f.label :end_date %><br>
-    <%#= f.date_select :end_date %>
-  </div>
+      <%= f.date_select :start_date, :order => [:month, :day, :year] %>
+      <%= f.date_select :end_date, :order => [:month, :day, :year] %>
   </div>
   
-  <div class="field">
-    <%= f.label :instruction %><br>
     <%= f.text_field :instruction %>
-  </div>
-  <div class="field">
     <%= f.hidden_field :patient_id, value: current_user.id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="btn-toolbar">
+    <%= f.submit "Update Prescription", :class => "btn btn-primary" %>
+
 
 <% end %>
+    <%= link_to 'Back', patient_path(current_user.id), :class => "btn btn-mine pull-right" %>
+  </div>
 
 <script>
   $("#patient_medication_ongoing").on("change", function(){
@@ -65,15 +58,4 @@
   // When the page loads, calculate if it should show or hide.
   doShowHide($("#patient_medication_ongoing")[0]);
 
-  $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {});
-  $(this).datepicker;
-  ({
-  format: "dd-mm-yyyy"
-  });
-  ({
-  weekStart: 1
-  });
-  ({
-  autoclose: true
-  });
 </script>

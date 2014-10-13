@@ -1,26 +1,8 @@
-<%= form_for(@doctor) do |f| %>
-
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
+<%= bootstrap_form_for(@doctor) do |f| %>
+    <%= f.text_field :first_name, :autofocus => true %>
     <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :specialty %><br>
-    <%= f.select :specialty, options_for_select(["Primary Care - Family Medicine", "Primary Care - Internal Medicine", "Hospitalist", "Surgeon", "Cardiologist", "Dermatologist", "Endocrinologist", "Gastroenterologist", "Infectious Disease", "Nephrologist", "Ophthalmologist", "Obstetrician/Gynecologist", "Otolaryngologist", "Pediatrician", "Pulmonologist", "Psychiatrist"]), :selected => params[:specialty] %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
+    <%= f.select :specialty, options_for_select(["Primary Care - Family Medicine", "Primary Care - Internal Medicine", "Hospitalist", "Surgeon", "Cardiologist", "Dermatologist", "Endocrinologist", "Gastroenterologist", "Infectious Disease", "Nephrologist", "Ophthalmologist", "Obstetrician/Gynecologist", "Otolaryngologist", "Pediatrician", "Pulmonologist", "Psychiatrist"]), :include_blank => true, :prompt => "Choose Your Specialty", :selected => params[:specialty] %>
     <%= f.text_field :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
     <%= f.text_field :city  %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit @buton_face, :class => "btn btn-primary" %>
 <% end %>

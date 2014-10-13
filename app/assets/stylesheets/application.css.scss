@@ -24,13 +24,26 @@
 $mainColor: #dcedf4;
 
 body {
-  background-image: url(background_image.jpg);
+/*  background-image: url(background_image.jpg);
   background-repeat: no-repeat;
   margin: 0 auto;
   background-color: $mainColor;
   background-attachment: fixed;
   background-position: center; 
-  background-size: cover;
+  background-size: cover;*/
+}
+
+.btn-mine {
+  background-color: #b9d9d2;
+  color: #4b4154;
+}
+
+.btn-bootstrapSucks:hover {
+  background-color: #c3ae9d;
+}
+
+.center_home {
+  margin: 0 auto;
 }
 
 
@@ -4988,7 +5001,7 @@ body.modal-open,
 }
 @media screen and (min-width: 768px) {
   .modal-dialog {
-    left: 50%;
+    /*left: 50%;*/
     right: auto;
     width: 600px;
     padding-top: 30px;
