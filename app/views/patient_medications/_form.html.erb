@@ -26,12 +26,15 @@
     <%= f.label :ongoing %><br>
     <%= f.check_box :ongoing %>
   </div>
-  <div id="haha">
+  <div id="dateHide">
     <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %><br>
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
+      <%= f.text_field :start_date, 'data-behaviour' => 'datepicker' %>
+      <%= f.text_field :end_date, 'data-behaviour' => 'datepicker' %>
+
+    <%#= f.label :start_date %><br>
+    <%#= f.date_select :start_date %><br>
+    <%#= f.label :end_date %><br>
+    <%#= f.date_select :end_date %>
   </div>
   </div>
   
@@ -54,11 +57,23 @@
   });
   function doShowHide(cb){
     if(cb.checked)
-      $("#haha").hide();
+      $("#dateHide").hide();
     else
-      $("#haha").show();
+      $("#dateHide").show();
   }
 
   // When the page loads, calculate if it should show or hide.
   doShowHide($("#patient_medication_ongoing")[0]);
+
+  $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {});
+  $(this).datepicker;
+  ({
+  format: "dd-mm-yyyy"
+  });
+  ({
+  weekStart: 1
+  });
+  ({
+  autoclose: true
+  });
 </script>

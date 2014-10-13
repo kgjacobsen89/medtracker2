@@ -2,6 +2,36 @@
   <div class="col-md-10 col-offest-md-1">
     <%= bootstrap_form_for @user do |f| %>
 
+<<<<<<< HEAD
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= select_tag "form_tag", options_for_select(["Patient", "Doctor"]) %>
+  </div>
+=======
         <%= f.text_field :first_name %>
         <%= f.text_field :last_name %>
         <%= f.text_field :username %>
@@ -11,6 +41,7 @@
         <%= f.password_field :password_confirmation %>
         <%= f.label :type %><br>
         <%= select_tag "form_tag", options_for_select(["Patient", "Doctor"]) %>
+>>>>>>> fda7947bb2613286c9633b5fb9324f0e0dd0a76b
 
       <% if @user.type == 'Patient' %>
       <div class="field">
