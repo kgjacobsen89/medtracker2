@@ -1,15 +1,13 @@
 class MedicationsController < ApplicationController
 
   def index
-    @pillbox = Pillboxr.ingredient(:caffeine).image(true)
+    # @pillbox = Pillboxr.ingredient(:caffeine).image(true)
     @medications = Medication.all
-  end
-
-  def search
   end
 
   def show
     @medication = Medication.find(params[:id])
+    @drugs = HTTParty.get("http://rxnav.nlm.nih.gov/REST/drugs?name=#{@medication.name}")
   end
 
   def new

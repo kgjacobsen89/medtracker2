@@ -1,9 +1,15 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @medication.name.capitalize %>
 </p>
+
+<h1>Related Drugs</h1>
+<% Array.wrap(@drugs["rxnormdata"]["drugGroup"]["conceptGroup"]).each do |k| %>
+  <% Array.wrap(k["conceptProperties"]).each do |this| %>
+  <%= "Name is #{this["name"]} and synonym is #{this["synonym"]}." %>
+  <br />
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_medication_path(@medication) %> |
 <%= link_to 'Back', medications_path %>
