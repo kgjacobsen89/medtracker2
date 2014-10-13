@@ -11,7 +11,6 @@
  * file per style scope.
  *
  *= require rails_bootstrap_forms
- *= require bootstrap-datepicker
  *= require_tree .
  *= require_self
  */
@@ -20,10 +19,13 @@
 @import "bootstrap";
 @import "font-awesome";
 
+// old form control placeholder text #6b7980
 
-$mainColor: #dcedf4;
+$mainColor: #eefcd4;
 
 body {
+  // background-image: url('assets/halftone.png');
+  // background-attachment: fixed;
 /*  background-image: url(background_image.jpg);
   background-repeat: no-repeat;
   margin: 0 auto;
@@ -38,7 +40,7 @@ body {
   color: #4b4154;
 }
 
-.btn-bootstrapSucks:hover {
+.btn-mine:hover {
   background-color: #c3ae9d;
 }
 
@@ -1582,16 +1584,16 @@ input[type="number"]::-webkit-inner-spin-button {
   height: auto;
 }
 .form-control:-moz-placeholder {
-  color: #4e8271;
+  color: #939fa5;
 }
 .form-control::-moz-placeholder {
-  color: #4e8271;
+  color: #939fa5;
 }
 .form-control:-ms-input-placeholder {
-  color: #4e8271;
+  color: #939fa5;
 }
 .form-control::-webkit-input-placeholder {
-  color: #4e8271;
+  color: #939fa5;
 }
 .form-control {
   display: block;
@@ -1600,7 +1602,7 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #6b7980;
+  color: #939fa5;
   vertical-align: middle;
   background-color: #ffffff;
   border: 1px solid #cccccc;
