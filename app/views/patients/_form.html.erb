@@ -7,10 +7,11 @@
         <%= f.text_field :last_name %>
         <%= f.text_field :email %>
         <%= f.text_field :phone_number %>
-        <%= f.select :sex, options_for_select(["Male", "Female", "TransMale/Transman", "TransFemale/Transwoman", "Genderqueer", "Decline to State"], :include_blank => true, :prompt => "Gender", :selected => @patient.sex) %>
+        <%= f.select :sex, options_for_select(["Male", "Female", "TransMale/Transman", "TransFemale/Transwoman", "Genderqueer", "Decline to State"], :prompt => "Gender", :selected => @patient.sex) %>
 
         <%= f.date_select :date_of_birth, start_year: 1915, :order => [:month, :day, :year]  %>
         <%= f.select :blood_type, options_for_select(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-", "Unknown"], :default => "Unknown",  :selected => @patient.blood_type) %>
+        <%= f.text_field :allergies %>
 <div class="btn-toolbar">
           <%= f.submit @button_face, :class => "btn btn-primary" %>
       <% end %>

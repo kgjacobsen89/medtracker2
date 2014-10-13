@@ -14,10 +14,12 @@ class CreateUsers < ActiveRecord::Migration
       t.string :sex
       t.date :date_of_birth
       t.string :blood_type
+      t.text :allergies
 
       # doc stuff
       t.string :specialty
       t.string :city
+
       t.timestamps
     end
   end

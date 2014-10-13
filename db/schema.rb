@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20141001224312) do
     t.string   "sex"
     t.date     "date_of_birth"
     t.string   "blood_type"
+    t.text     "allergies"
     t.string   "specialty"
     t.string   "city"
     t.datetime "created_at"

@@ -10,7 +10,7 @@
         <%= f.password_field :password_confirmation, placeholder: "confirm password" %>
         <div class="form-group">
           <label for="user_type">Type</label>
-        <%= select_tag "form_tag", options_for_select(["Patient", "Doctor"]), :class => "form-control", :include_blank => true, :prompt => "Please Select Doctor or Patient" %>
+        <%= select_tag "form_tag", options_for_select(["Patient", "Doctor"]), :class => "form-control", :prompt => "Please Select Doctor or Patient" %>
       </div>
         <%= f.submit @button_face, :class => "btn btn-primary" %>
 
