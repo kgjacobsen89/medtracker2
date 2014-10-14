@@ -4,15 +4,19 @@
 Specialization: <%= @doctor.specialty %> <br />
 City of Practice: <%= @doctor.city %> <br / >
 
-<h2> Patients </h2>
-<ul>
-  <% @doctor.patients.each do |p| %>
-  <li>
-    <strong> <%= p.first_name %> <%= p.last_name %></strong> 
-    <%= link_to "More Patient Information", patient_path(p) %>
-  </li>
+<% if current_user %>
+  <% if current_user.type == 'Doctor' %>
+    <h2> Patients </h2>
+    <ul>
+      <% @doctor.patients.each do |p| %>
+      <li>
+        <strong> <%= p.first_name %> <%= p.last_name %></strong> 
+        <%= link_to "More Patient Information", patient_path(p) %>
+      </li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
+<% end %>
 
 <h2> Prescriptions </h2>
 <ul> 
@@ -28,5 +32,8 @@ City of Practice: <%= @doctor.city %> <br / >
 Phone Number: <%= @doctor.phone_number %> <br />
 Email: <%= @doctor.email %> <br />
 
-<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
-<%= link_to 'Back', doctors_path %>
+<% if current_user %>
+  <% if current_user.type == 'Doctor' %>
+    <%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+  <% end %>
+<% end %>

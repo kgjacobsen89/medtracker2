@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :medications
-  get 'medication/search' => 'medications#search'
 
   resources :patient_medications
 

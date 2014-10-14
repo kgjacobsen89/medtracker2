@@ -8,6 +8,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 gem 'bootstrap-generators', '~> 3.2.0'
 gem "font-awesome-rails"
+gem "animate-rails"
 
 # Use postgresql as the database for Active Record
 gem 'pg'

@@ -4,6 +4,7 @@
 Sex: <%= @patient.sex %> <br />
 Date of Birth: <%= @patient.date_of_birth %> <br / >
 Blood Type: <%= @patient.blood_type %> <br />
+Allergies: <%= @patient.allergies %><br />
 
 <h2> Patient's Selected Doctors </h2>
 <%= link_to "Add New Doctor", new_patient_doctor_path %>
@@ -23,18 +24,20 @@ Blood Type: <%= @patient.blood_type %> <br />
   <li>
     <% med = m.medication %>
     <strong> <%= med.name.capitalize %> </strong>
-    <%= link_to "More Medication Info", medication_path(m) %> <br />
+    <i><%= link_to "More Medication Info", medication_path(m) %></i> <br />
     <% doc = m.doctor %>
-    <%= doc.last_name %> <br>
-    <%= m.dosage %> <%= m.dosage_unit %><br>
-    <%= m.periodicity %> <%= m.periodicity_unit %> <br>
-    <%= m.duration %> <%= m.duration_unit %> <br>
-    <%= m.instruction %> <br>
+    Prescribed by: <%= doc.last_name %> <br>
+    Dosage: <%= m.dosage %> <%= m.dosage_unit %><br>
+    Periodicity: <%= m.periodicity %> <%= m.periodicity_unit %> <br>
+    Duration: <%= m.duration %> <%= m.duration_unit %> <br>
+    Instructions: <%= m.instruction %> <br>
     <% if m.ongoing == false %>
       <%= m.start_date %> <br>
-      <%= m.end_date %> <br>
+      <%= m.end_date %>
+    <% elsif m.ongoing == true %>
+      <p>Ongoing</p>
     <% end %>
-    <%= link_to "Edit Medication", edit_patient_medication_path(m) %>
+    <i><%= link_to "Edit Prescription", edit_patient_medication_path(m) %></i>
   </li>
   <% end %>
 </ul>

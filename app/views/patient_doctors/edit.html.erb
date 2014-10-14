@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @patient_doctor %> |
-<%= link_to 'Back', patient_doctors_path %>
+
+<%= link_to 'Back', patient_path(current_user.id) %>

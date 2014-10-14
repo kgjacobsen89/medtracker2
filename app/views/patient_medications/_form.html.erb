@@ -1,5 +1,5 @@
 <%= bootstrap_form_for(@patient_medication) do |f| %>
-    <%= f.collection_select(:doctor_id, Doctor.order("last_name ASC", "first_name ASC", "specialty ASC").find(@patient.doctor_ids), :id, :name, {:prompt => "Please select a doctor"}) %>  
+    <%= f.collection_select(:doctor_id, Doctor.order("last_name ASC", "first_name ASC", "specialty ASC").find(@patient.doctor_ids), :id, :name, {:include_blank => true, :prompt => "Please select a doctor"}) %>  
     <%= f.collection_select(:medication_id, Medication.order('name ASC'), :id, :cap_name, {:prompt => "Please select a medication"}) %>
     <div class="form-group">
       <label for="patient_medication_dosage">Dosage</label>

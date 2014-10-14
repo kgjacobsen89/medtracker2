@@ -14,7 +14,7 @@
     <%= f.hidden_field :patient_id, value: current_user.id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit @button_face, :class => "btn btn-primary" %>
   </div>
 <br>
 <% end %>

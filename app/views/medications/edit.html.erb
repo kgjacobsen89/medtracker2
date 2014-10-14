@@ -2,5 +2,8 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @medication %> |
-<%= link_to 'Back', medications_path %>
+<% if current_user %>
+	<% if current_user.type == 'Patient' %>
+		<%= link_to 'Back', patient_path(current_user.id) %>
+	<% end %>
+<% end %>

@@ -1,15 +1,21 @@
-<p>
-  <strong>Name:</strong>
-  <%= @medication.name.capitalize %>
-</p>
+<h1><%= @medication.name.capitalize %></h1>
+
 
 <h1>Related Drugs</h1>
 <% Array.wrap(@drugs["rxnormdata"]["drugGroup"]["conceptGroup"]).each do |k| %>
   <% Array.wrap(k["conceptProperties"]).each do |this| %>
   <%= "Name is #{this["name"]} and synonym is #{this["synonym"]}." %>
   <br />
+  <br />
   <% end %>
 <% end %>
 
-<%= link_to 'Edit', edit_medication_path(@medication) %> |
-<%= link_to 'Back', medications_path %>
+<% if current_user %>
+	<% if current_user.type == "Patient" %>
+    <%= link_to 'Edit', edit_patient_medication_path %> |
+    <%= link_to 'Back', patient_path(current_user.id) %>
+  <% else %>
+   	<%= link_to 'Back', doctor_path(current_user.id) %>
+	<% end %>
+<% end %>
+
