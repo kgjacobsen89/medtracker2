@@ -7,7 +7,7 @@ Blood Type: <%= @patient.blood_type %> <br />
 Allergies: <%= @patient.allergies %><br />
 
 <h2> Patient's Selected Doctors </h2>
-<%= link_to "Add New Doctor", new_patient_doctor_path %>
+<i><%= link_to "Add New Doctor", new_patient_doctor_path %></i>
 <ul>
   <% @doctors.each do |d| %>
   <li>
@@ -18,7 +18,7 @@ Allergies: <%= @patient.allergies %><br />
 </ul>
 
 <h2> Patient's Medications </h2>
-<%= link_to "Add New Medication", new_medication_path %> <br />
+<i><%= link_to "Add New Medication", new_medication_path %></i> <br />
 <ul>
   <% @medications.each do |m| %>
   <li>
@@ -46,5 +46,10 @@ Allergies: <%= @patient.allergies %><br />
 Phone: <%= @patient.phone_number %> <br />
 Email: <%= @patient.email %><br />
 
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<% if current_user %>
+  <% if current_user.type == 'Patient' %>
+    <%= link_to 'Edit My Profile', edit_patient_path(@patient), :class => "btn btn-mine" %>
+  <% end %>
+<% end %>
+<br>
+<br>
