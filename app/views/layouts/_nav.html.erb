@@ -52,11 +52,11 @@
           <ul class="dropdown-menu" role="menu">
             <% if current_user.type == "Patient" %>
               <li>
-                <%= link_to '  update my profile', edit_patient_path(current_user), class: "fa fa-cogs" %>
+                <%= link_to '  my profile', patient_path(current_user), class: "fa fa-cogs" %>
               </li>
               <% else %>
               <li>
-                <%= link_to '  update my profile', edit_doctor_path(current_user), class: "fa fa-cogs" %>
+                <%= link_to '  my profile', doctor_path(current_user), class: "fa fa-cogs" %>
               </li>
             <% end %>
 
