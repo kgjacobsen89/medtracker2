@@ -1,7 +1,7 @@
 <%= bootstrap_form_for(@doctor) do |f| %>
     <%= f.text_field :first_name, :autofocus => true %>
     <%= f.text_field :last_name %>
-    <%= f.select :specialty, options_for_select(["Primary Care - Family Medicine", "Primary Care - Internal Medicine", "Hospitalist", "Surgeon", "Cardiologist", "Dermatologist", "Endocrinologist", "Gastroenterologist", "Infectious Disease", "Nephrologist", "Ophthalmologist", "Obstetrician/Gynecologist", "Otolaryngologist", "Pediatrician", "Pulmonologist", "Psychiatrist"]), :include_blank => true, :prompt => "Choose Your Specialty", :selected => params[:specialty] %>
+    <%= f.select :specialty, options_for_select(["Primary Care - Family Medicine", "Primary Care - Internal Medicine", "Hospitalist", "Surgeon", "Cardiologist", "Dermatologist", "Endocrinologist", "Gastroenterologist", "Infectious Disease", "Nephrologist", "Ophthalmologist", "Obstetrician/Gynecologist", "Otolaryngologist", "Pediatrician", "Pulmonologist", "Psychiatrist"], :include_blank => true, :prompt => "Choose Your Specialty", :selected => @doctor.specialty)%>
     <%= f.text_field :phone_number %>
     <%= f.text_field :city  %>
 <div class="btn-toolbar">
