@@ -25,16 +25,16 @@
 $mainColor: #eefcd4;
 
 body {
- //background-image: url('pill.svg');
+ background-image: url('pill2.svg');
+ background-repeat: no-repeat;
+ //background-position: 100% 100%;
+ //background-image: url(background_image.jpg);
  //background-repeat: no-repeat;
- //background-position: right bottom;
-/*  background-image: url(background_image.jpg);
-  background-repeat: no-repeat;
   margin: 0 auto;
-  background-color: $mainColor;
+ //background-color: $mainColor;
   background-attachment: fixed;
-  background-position: center; 
-  background-size: cover;*/
+  background-position: right bottom; 
+  /*background-size: cover;*/
 }
 
 .btn-mine {
