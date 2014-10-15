@@ -6,8 +6,8 @@ Date of Birth: <%= @patient.date_of_birth %> <br / >
 Blood Type: <%= @patient.blood_type %> <br />
 Allergies: <%= @patient.allergies %><br />
 
-<h2> Patient's Selected Doctors </h2>
-<i><%= link_to "Add New Doctor", new_patient_doctor_path %></i>
+<h2> Patient's Doctors </h2>
+<%= link_to "Add New Doctor", new_patient_doctor_path, :class => "btn btn-primary", :style => "color:#fff" %>
 <ul>
   <% @doctors.each do |d| %>
   <li>
@@ -18,7 +18,7 @@ Allergies: <%= @patient.allergies %><br />
 </ul>
 
 <h2> Patient's Medications </h2>
-<i><%= link_to "Add New Medication", new_medication_path %></i> <br />
+<%= link_to "Add New Medication", new_medication_path, :class => "btn btn-primary", :style => "color:#fff" %> <br />
 <ul>
   <% @medications.each do |m| %>
   <li>
