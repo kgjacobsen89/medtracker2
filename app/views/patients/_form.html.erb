@@ -11,7 +11,7 @@
         <%= f.select :blood_type, options_for_select(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-", "Unknown"], :default => "Unknown",  :selected => @patient.blood_type) %>
         <%= f.text_field :allergies %>
 <div class="btn-toolbar">
-          <%= f.submit "Update, :class => "btn btn-primary" %>
+          <%= f.submit "Update", :class => "btn btn-primary" %>
       <% end %>
       <%= link_to "Change Password", "#myModalSignup", :class => "btn btn-mine pull-right", "data-toggle" => "modal" %>
        <!--  <button class="btn btn-dark btn-xlarge" data-toggle="modal" data-target="#myModalSignup">Change Password</button> -->
