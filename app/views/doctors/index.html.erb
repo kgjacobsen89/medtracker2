@@ -7,11 +7,8 @@
         <th>First name</th>
         <th>Last name</th>
         <th>Specialty</th>
-        <th>Phone number</th>
         <th>City</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>Phone number</th>
       </tr>
     </thead>
 
@@ -21,11 +18,8 @@
           <td><%= doctor.first_name %></td>
           <td><%= doctor.last_name %></td>
           <td><%= doctor.specialty %></td>
-          <td><%= doctor.phone_number %></td>
           <td><%= doctor.city %></td>
-          <td><%= link_to 'Show', doctor %></td>
-          <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
-          <td><%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= doctor.phone_number %></td>
         </tr>
       <% end %>
     </tbody>
