@@ -4,5 +4,31 @@
     <%= f.select :specialty, options_for_select(["Primary Care - Family Medicine", "Primary Care - Internal Medicine", "Hospitalist", "Surgeon", "Cardiologist", "Dermatologist", "Endocrinologist", "Gastroenterologist", "Infectious Disease", "Nephrologist", "Ophthalmologist", "Obstetrician/Gynecologist", "Otolaryngologist", "Pediatrician", "Pulmonologist", "Psychiatrist"]), :include_blank => true, :prompt => "Choose Your Specialty", :selected => params[:specialty] %>
     <%= f.text_field :phone_number %>
     <%= f.text_field :city  %>
-    <%= f.submit @buton_face, :class => "btn btn-primary" %>
+<div class="btn-toolbar">
+    <%= f.submit "Update", :class => "btn btn-primary" %>
 <% end %>
+<%= link_to "Change Password", "#myModalSignup", :class => "btn btn-mine pull-right", "data-toggle" => "modal" %>
+</div>
+
+<div class="modal fade" id="myModalSignup" tabindex="-1" role="dialog" aria-labelledby="myModalLabelSignup" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabelSignup">Change Password</h4>
+      </div>
+      <div class="modal-body">
+        <%= bootstrap_form_for @doctor do |f| %>
+
+          <%= f.password_field :password %>
+          <%= f.password_field :password_confirmation %>
+      <div class="btn-toolbar">
+         <div class="actions">
+            <%= f.submit "Update", class: "btn btn-primary pull-right" %>
+          </div>
+        <% end %>
+      </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
