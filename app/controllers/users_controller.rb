@@ -12,12 +12,12 @@ class UsersController < ApplicationController
     if params[:form_tag] == 'Patient'
       @user = Patient.new(user_params)
         session[:user_id] = @user.id.to_s if @user.save
-        # UserMailer.welcome_email(@user).deliver
+        UserMailer.welcome_email(@user).deliver
         redirect_to new_patient_path(patient_id: @user.id)
     elsif params[:form_tag] == 'Doctor'
       @user = Doctor.new(user_params)
         session[:user_id] = @user.id.to_s if @user.save
-        # UserMailer.welcome_email(@user).deliver
+        UserMailer.welcome_email(@user).deliver
         redirect_to new_doctor_path(doctor_id: @user.id)
     else
       render 'new'
