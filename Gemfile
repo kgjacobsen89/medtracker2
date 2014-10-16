@@ -60,5 +60,8 @@ gem 'actionmailer', '~> 4.1.5'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Add Rspec
+gem 'rspec-rails'
+
 gem 'rails_12factor', group: :production
 
