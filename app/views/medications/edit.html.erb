@@ -1,9 +1,10 @@
-<h1>Edit Medication</h1>
+<div class="row">
+	<div class="col-xs-8 col-xs-offset-2">
+		<h1>Edit Medication</h1>
+		<%= render 'form' %>
+	</div>
+</div>
+<br>
+<br>
 
-<%= render 'form' %>
 
-<% if current_user %>
-	<% if current_user.type == 'Patient' %>
-		<%= link_to 'Back', patient_path(current_user.id) %>
-	<% end %>
-<% end %>

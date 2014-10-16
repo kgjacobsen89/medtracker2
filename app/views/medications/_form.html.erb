@@ -1,4 +1,7 @@
 <%= bootstrap_form_for(@medication) do |f| %>
     <%= f.text_field :name, placeholder: "ex. Caffeine", :autofocus => true %>
+<div class="btn-toolbar">
     <%= f.submit @button_face, :class => "btn btn-primary" %> 
 <% end %>
+		<%= link_to 'Back', patient_path(current_user.id), :class => "btn btn-mine pull-right" %>
+</div>

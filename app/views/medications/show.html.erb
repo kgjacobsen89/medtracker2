@@ -1,7 +1,7 @@
 <h1><%= @medication.name.capitalize %></h1>
 
 
-<h1>Related Drugs</h1>
+<h3>Related Drugs</h3>
 <% Array.wrap(@drugs["rxnormdata"]["drugGroup"]["conceptGroup"]).each do |k| %>
   <% Array.wrap(k["conceptProperties"]).each do |this| %>
   <%= "Name is #{this["name"]} and synonym is #{this["synonym"]}." %>
@@ -12,10 +12,9 @@
 
 <% if current_user %>
 	<% if current_user.type == "Patient" %>
-    <%= link_to 'Edit', edit_patient_medication_path %> |
-    <%= link_to 'Back', patient_path(current_user.id) %>
+    <%= link_to 'Back', patient_path(current_user.id), :class => "btn btn-mine" %>
   <% else %>
-   	<%= link_to 'Back', doctor_path(current_user.id) %>
+   	<%= link_to 'Back', doctor_path(current_user.id), :class => "btn btn-mine" %>
 	<% end %>
 <% end %>
 

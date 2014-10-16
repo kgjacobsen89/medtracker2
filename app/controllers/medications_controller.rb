@@ -25,20 +25,20 @@ class MedicationsController < ApplicationController
     end  
   end
 
-  def edit
-    @patient = Patient.find(session[:user_id])
-    @medication = Medication.find(params[:id])
-  end
+  # def edit
+  #   @patient = Patient.find(session[:user_id])
+  #   @medication = Medication.find(params[:id])
+  # end
 
-  def update
-    @patient = Patient.find(session[:user_id])
-    @medication = Medication.find(params[:id])
-    if @medication.update_attributes(medication_params)
-      redirect_to new_patient_medication_path
-    else
-      render 'edit'
-    end
-  end
+  # def update
+  #   @patient = Patient.find(session[:user_id])
+  #   @medication = Medication.find(params[:id])
+  #   if @medication.update_attributes(medication_params)
+  #     redirect_to new_patient_medication_path
+  #   else
+  #     render 'edit'
+  #   end
+  # end
 
   def destroy
     @medication = Medication.find(params[:id]).destroy 
