@@ -24,10 +24,13 @@
         <li class="active">
           <%= link_to 'Doctors', doctors_path %>
         </li>
-        <li class="active">
-          <%= link_to 'Patients', patients_path %>
-        </li>
-
+        <% if current_user %>
+          <% if current_user.type == 'Doctor' %>
+            <li class="active">
+              <%= link_to 'My Patients', patients_path %>
+            </li>
+          <% end %>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

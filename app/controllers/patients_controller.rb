@@ -1,7 +1,12 @@
 class PatientsController < ApplicationController
 
   def index
-    @patients = Patient.all
+    if !current_user
+      redirect_to new_user_path
+      return
+    end
+    @doctor = Doctor.find(current_user)
+    @patients = Patient.find(@doctor.patient_ids)
   end
 
   def show
