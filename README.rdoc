@@ -1,28 +1,17 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Does your dentist know what your GP prescribed you? Does your out-of-network surgeon know what medications you are  allergic to?
 
-Things you may want to cover:
+MedTracker 2.0, originally built using MongoDB, but moved to PostgreSQL, is designed to answer these questions. Not only does it allow you to list medications you have previously or are currently taken, but also you can allow your doctors to access your medication history and communicate more easily with your other healthcare providers regarding your treatment plans. 
 
-* Ruby version
+* Ruby version 
+Ruby '2.1.2'
 
 * System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+Rails '4.1.5' 
 
 * Deployment instructions
+Heroku
 
 * ...
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
