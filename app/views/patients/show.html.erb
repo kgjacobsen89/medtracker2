@@ -1,55 +1,139 @@
-<h1> <%= @patient.first_name %> <%= @patient.last_name %> </h1>
+<!-- Page Content -->
+  <div class="container">
 
-<h2> Patient Information </h2>
-Sex: <%= @patient.sex %> <br />
-Date of Birth: <%= @patient.date_of_birth %> <br / >
-Blood Type: <%= @patient.blood_type %> <br />
-Allergies: <%= @patient.allergies %><br />
+      <div class="row">
 
-<h2> Patient's Doctors </h2>
-<%= link_to "Add New Doctor", new_patient_doctor_path, :class => "btn btn-primary", :style => "color:#fff" %>
-<ul>
-  <% @doctors.each do |d| %>
-  <li>
-    <strong> Dr. <%= d.first_name %> <%= d.last_name %> </strong>
-    <i><%= link_to "Doctor Profile", doctor_path(d) %></i>
-  </li>
-  <% end %>
-</ul>
+          <!-- Blog Post Content Column -->
+          <div class="col-lg-8">
 
-<h2> Patient's Medications </h2>
-<%= link_to "Add New Medication", new_medication_path, :class => "btn btn-primary", :style => "color:#fff" %> <br />
-<ul>
-  <% @medications.each do |m| %>
-  <li>
-    <% med = m.medication %>
-    <strong> <%= med.name.capitalize %> </strong>
-    <i><%= link_to "More Medication Info", medication_path(m) %></i> <br />
-    <% doc = m.doctor %>
-    Prescribed by: <%= doc.last_name %> <br>
-    Dosage: <%= m.dosage %> <%= m.dosage_unit %><br>
-    Periodicity: <%= m.periodicity %> <%= m.periodicity_unit %> <br>
-    Duration: <%= m.duration %> <%= m.duration_unit %> <br>
-    Instructions: <%= m.instruction %> <br>
-    <% if m.ongoing == false %>
-      <%= m.start_date %> <br>
-      <%= m.end_date %>
-    <% elsif m.ongoing == true %>
-      <p>Ongoing</p>
-    <% end %>
-    <i><%= link_to "Edit Prescription", edit_patient_medication_path(m) %></i>
-  </li>
-  <% end %>
-</ul>
+              <!-- Blog Post -->
 
-<h3> Contact Information </h3>
-Phone: <%= @patient.phone_number %> <br />
-Email: <%= @patient.email %><br />
+              <!-- Title -->
+              <h1> Patient: <%= @patient.first_name %> <%= @patient.last_name %> </h1>
 
-<% if current_user %>
-  <% if current_user.type == 'Patient' %>
-    <%= link_to 'Edit My Profile', edit_patient_path(@patient), :class => "btn btn-mine" %>
-  <% end %>
-<% end %>
-<br>
-<br>
+              <hr>
+
+              <!-- Preview Image -->
+              <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+
+              <hr>
+
+              <h2 style="font-size:28px;display:inline"> Medications</h2> 
+              <%= link_to "New Medication", new_medication_path, :class => "btn btn-primary pull-right", :style => "display:inline;color:#fff" %><br><br>
+
+                 <!-- Medication Search Well -->
+              <div class="well">
+                  <h4>Search Medication History</h4>
+                  <div class="input-group">
+                      <input type="text" class="form-control">
+                      <span class="input-group-btn">
+                          <button class="btn btn-default" type="button">
+                              <span class="glyphicon glyphicon-search"></span>
+                      </button>
+                      </span>
+                  </div>
+                  <!-- /.input-group -->
+              </div>
+
+              <!-- Post Content -->
+             <% @medications.each do |m| %>
+              <div class="panel panel-default">
+                <!-- Default panel contents -->
+                 <% med = m.medication %>
+                <div class="panel-heading" style="font-size:20px;padding-top:15px;overflow:hidden"><strong> <%= med.name.capitalize %> </strong> <%= link_to "More Medication Info", medication_path(m), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;display:inline" %></div>
+                <div class="panel-body">
+                  <%= link_to "Edit Prescription", edit_patient_medication_path(m), :class => "btn btn-mine" %>
+                </div>
+
+                <!-- List group -->
+                <ul class="list-group">
+                  <% doc = m.doctor %>
+                  <% if doc.last_name %>
+                    <li class="list-group-item" style="overflow:hidden">Prescribed by:<div class="pull-right"> Dr. <%= doc.first_name %> <%=doc.last_name %> - <%=doc.specialty %></div></li>
+                  <% end %>
+                  <li class="list-group-item">Dosage:<div class="pull-right"> <%= m.dosage %> <%= m.dosage_unit %></div></li>
+                  <li class="list-group-item">Periodicity:<div class="pull-right"> <%= m.periodicity %> <%= m.periodicity_unit %></div></li>
+                  <li class="list-group-item">Duration: <div class="pull-right"><%= m.duration %> <%= m.duration_unit %></div></li>
+                  <li class="list-group-item">Instructions: <%= m.instruction %></li>
+                  <% if m.ongoing == false %>
+                    <li class="list-group-item">Start Date:<div class="pull-right"> <%= m.start_date %></div></li>
+                    <li class="list-group-item">End Date:<div class="pull-right"> <%= m.end_date %></div></li>
+                  <% elsif m.ongoing == true %>
+                    <li class="list-group-item">Status: <div class="pull-right">Ongoing</div></li>
+                  <% end %>
+                </ul>
+              </div>
+              <% end %>
+
+           
+          </div>
+
+          <!-- Blog Sidebar Widgets Column -->
+          <div class="col-md-4">
+
+              <!-- Side Widget Well -->
+              <!-- <div class="well"> -->
+                <div class="panel panel-default">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading"><h4>Patient Information</h4></div>
+                  <div class="panel-body">
+                    <% if current_user %>
+                      <% if current_user.type == 'Patient' %>
+                        <%= link_to 'Edit Profile', edit_patient_path(@patient), :class => "btn btn-mine" %>
+                      <% end %>
+                    <% end %>
+                  </div>
+
+                  <!-- List group -->
+                  <ul class="list-group">
+                    <li class="list-group-item">Sex: <%= @patient.sex %></li>
+                    <li class="list-group-item">Date of Birth: <%= @patient.date_of_birth %></li>
+                    <li class="list-group-item">Blood Type: <%= @patient.blood_type %></li>
+                    <li class="list-group-item">Allergies: <%= @patient.allergies %></li>
+                  </ul>
+                </div>
+                  <!-- <h4>Patient Information</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p> -->
+              <!-- </div> -->
+
+              <!-- Blog Categories Well -->
+              <div class="well">
+                <div class="btn-toolbar">
+                  <h4 style="display:inline"> Selected Doctors</h4>
+                  <%= link_to "New Doctor", new_patient_doctor_path, :class => "btn btn-primary pull-right", :style => "margin-top:-5px;display:inline;color:#fff" %>
+                </div>
+                <br>
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <ul class="list-unstyled">
+                            <% @doctors.each do |d| %>
+                              <li style="display:inline">Dr. <%= d.first_name%> <%= d.last_name %>
+                              <%= link_to "View Doctor", doctor_path(d), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;font-size:13px;display:inline" %></li>
+                            <% end %>
+                          </ul>
+                      </div>
+                  </div>
+                  <!-- /.row -->
+              </div>
+               <!-- Side Widget Well -->
+                  <!-- <div class="well"> -->
+                    <div class="panel panel-default">
+                      <!-- Default panel contents -->
+                      <div class="panel-heading"><h4>Contact Information</h4></div>
+
+                      <!-- List group -->
+                      <ul class="list-group">
+                        <li class="list-group-item">Phone: <%= @patient.phone_number %></li>
+                        <li class="list-group-item">Email: <%= @patient.email %></li>
+                      </ul>
+                    </div>              
+
+          </div>
+
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+  </div>
+  <!-- /.container -->
