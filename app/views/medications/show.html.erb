@@ -4,9 +4,15 @@
 <h3>Related Drugs</h3>
 <% Array.wrap(@drugs["rxnormdata"]["drugGroup"]["conceptGroup"]).each do |k| %>
   <% Array.wrap(k["conceptProperties"]).each do |this| %>
-  <%= "Name is #{this["name"]} and synonym is #{this["synonym"]}." %>
-  <br />
-  <br />
+  <div class="media">
+  <a class="pull-left" href="#">
+    <img class="media-object" src="/assets/pill3.svg" style="height:50px; width:auto">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><%= "#{this["name"]}" %></h4>
+    <%= "#{this["synonym"]}" %>
+  </div>
+</div>
   <% end %>
 <% end %>
 
@@ -17,4 +23,5 @@
    	<%= link_to 'Back', doctor_path(current_user.id), :class => "btn btn-mine" %>
 	<% end %>
 <% end %>
+
 

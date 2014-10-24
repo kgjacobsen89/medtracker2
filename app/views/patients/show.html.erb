@@ -40,7 +40,7 @@
               <div class="panel panel-default">
                 <!-- Default panel contents -->
                  <% med = m.medication %>
-                <div class="panel-heading" style="font-size:20px;padding-top:15px;overflow:hidden"><strong> <%= med.name.capitalize %> </strong> <%= link_to "More Medication Info", medication_path(m), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;display:inline" %></div>
+                <div class="panel-heading" style="overflow:hidden;font-size:20px;padding-top:15px;overflow:hidden"><strong> <%= med.name.capitalize %> </strong> <%= link_to "More Medication Info", medication_path(m), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;display:inline" %></div>
                 <div class="panel-body">
                   <%= link_to "Edit Prescription", edit_patient_medication_path(m), :class => "btn btn-mine" %>
                 </div>
@@ -119,7 +119,7 @@
                   <!-- <div class="well"> -->
                     <div class="panel panel-default">
                       <!-- Default panel contents -->
-                      <div class="panel-heading"><h4>Contact Information</h4></div>
+                      <div class="panel-heading"><h4>Contact</h4></div>
 
                       <!-- List group -->
                       <ul class="list-group">
