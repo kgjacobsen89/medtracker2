@@ -13,6 +13,9 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Format our dates like "12/25/2011'
+Date::DATE_FORMATS[:default] = '%m/%d/%Y'
+
 module Medtracker2
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
