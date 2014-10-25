@@ -128,7 +128,7 @@
                       <!-- List group -->
                       <ul class="list-group">
                         <li class="list-group-item">Phone: <%= @patient.phone_number %></li>
-                        <li class="list-group-item">Email: <%= @patient.email %></li>
+                        <li class="list-group-item">Email: <a href="mailto:<%= @patient.email %>"><%= @patient.email %></a></li>
                       </ul>
                     </div>              
 
