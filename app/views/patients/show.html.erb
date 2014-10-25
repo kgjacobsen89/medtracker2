@@ -111,8 +111,8 @@
                       <div class="col-xs-12">
                           <ul class="list-unstyled">
                             <% @doctors.each do |d| %>
-                              <li style="display:inline">Dr. <%= d.first_name%> <%= d.last_name %>
-                              <%= link_to "View Doctor", doctor_path(d), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;font-size:13px;display:inline" %></li>
+                              <li>Dr. <%= d.first_name%> <%= d.last_name %>
+                              <em><%= link_to "View Doctor", doctor_path(d), :class => "pull-right " %></em></li>
                             <% end %>
                           </ul>
                       </div>
