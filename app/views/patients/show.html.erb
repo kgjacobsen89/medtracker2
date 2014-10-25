@@ -49,8 +49,8 @@
 
                 <!-- List group -->
                 <ul class="list-group">
+                  <% if m.doctor %>
                   <% doc = m.doctor %>
-                  <% if doc.last_name %>
                     <li class="list-group-item" style="overflow:hidden">Prescribed by:<div class="pull-right"> Dr. <%= doc.first_name %> <%=doc.last_name %> - <%=doc.specialty %></div></li>
                   <% end %>
                   <li class="list-group-item">Dosage:<div class="pull-right"> <%= m.dosage %> <%= m.dosage_unit %></div></li>
