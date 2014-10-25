@@ -5,7 +5,15 @@ class UsersController < ApplicationController
   end
 
   def new
+    if current_user
+      if current_user.type == "Patient"
+        redirect_to patient_path(current_user)
+      else 
+        redirect_to doctor_path(current_user)
+      end
+    else
     @user = User.new
+    end
   end
 
  def create
