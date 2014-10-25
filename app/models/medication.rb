@@ -1,13 +1,6 @@
 class Medication < ActiveRecord::Base
-	before_save do  |medication| 
-		begin 
-			medication.name = medication.name.strip.downcase 
-		rescue ActiveRecord::RecordNotUnique => error
-			 errors[:base] << error.message
-			# "don't try to save it..."
-			redirect_to new_patient_medication_path
-		end
-	end
+	# before_save do  |medication| 
+		
 
 	# validates_uniqueness_of :name
 

@@ -18,11 +18,34 @@ class MedicationsController < ApplicationController
 
   def create
     @medication = Medication.new(medication_params)
-    if @medication.save 
+
+    # begin 
+    #   medication.name = medication.name.strip.downcase 
+    # rescue 
+    #   redirect_to new_patient_medication_path
+    # end
+    # if @medication.save 
+    #   redirect_to new_patient_medication_path
+    # else 
+    #   render 'new' 
+    # end  
+
+    @medication.name = @medication.name.strip.downcase 
+    success = false 
+    begin
+      if @medication.save
+        success = true
+      else
+        success = false
+      end
+    rescue
+      success = false
+    end 
+    if success
       redirect_to new_patient_medication_path
-    else 
-      render 'new' 
-    end  
+    else
+      redirect_to new_patient_medication_path  
+    end
   end
 
   # def edit
