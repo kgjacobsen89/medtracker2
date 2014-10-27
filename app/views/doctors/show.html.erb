@@ -87,15 +87,15 @@
                 <!-- Blog Categories Well -->
               <div class="well">
                 <div class="btn-toolbar">
-                  <h4> Prescriptions</h4>
+                  <h4> Medication Experience</h4>
                 </div>
                 <br>
                   <div class="row">
                       <div class="col-xs-12">
                           <ul class="list-unstyled">
                             <% @doctor.patient_medications.each do |m| %>
-                              <li style="display:inline"><%= m.medication.name.capitalize %>
-                              <%= link_to "View Medication", medication_path(m), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;font-size:13px;display:inline" %></li>
+                              <li style="padding-top:15px"><%= m.medication.name.capitalize %>
+                              <%= link_to "View Medication", medication_path(m), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;font-size:13px" %></li>
                             <% end %>
                           </ul>
                       </div>
