@@ -1,27 +1,50 @@
-<h1><%= @medication.name.capitalize %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1><%= @medication.name.capitalize %></h1>
+      <hr>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-lg-8">
 
-<h3>Related Drugs</h3>
-<% Array.wrap(@drugs["rxnormdata"]["drugGroup"]["conceptGroup"]).each do |k| %>
-  <% Array.wrap(k["conceptProperties"]).each do |this| %>
-  <div class="media">
-  <a class="pull-left" href="#">
-    <img class="media-object" src="/assets/pill3.svg" style="height:50px; width:auto">
-  </a>
-  <div class="media-body">
-    <h4 class="media-heading"><%= "#{this["name"]}" %></h4>
-    <%= "#{this["synonym"]}" %>
+      <h2 style="font-size:28px;display:inline">Related Drugs</h2>
+      <% if current_user %>
+        <% if current_user.type == "Patient" %>
+          <%= link_to 'Back', patient_path(current_user.id), :class => "btn btn-mine pull-right", :style => "display:inline" %><br><br>
+        <% else %>
+          <%= link_to 'Back', doctor_path(current_user.id), :class => "btn btn-mine pull-right", :style => "display:inline" %><br><br>
+        <% end %>
+      <% end %>
+        <div class="well">
+          <h4>Search Similar Medications</h4>
+          <div class="input-group">
+              <input type="text" class="form-control">
+              <span class="input-group-btn">
+                  <button class="btn btn-default btn-purplish" type="button">
+                      <span class="glyphicon glyphicon-search"></span>
+              </button>
+              </span>
+          </div>
+          <!-- /.input-group -->
+        </div>
+      <% Array.wrap(@drugs["rxnormdata"]["drugGroup"]["conceptGroup"]).each do |k| %>
+        <% Array.wrap(k["conceptProperties"]).each do |this| %>
+        <div class="media">
+        <a class="pull-left" href="#">
+          <img class="media-object" src="/assets/pill3.svg" style="height:50px; width:auto">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading"><%= "#{this["name"]}" %></h4>
+          <%= "#{this["synonym"]}" %>
+        </div>
+      </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-  <% end %>
-<% end %>
 
-<% if current_user %>
-	<% if current_user.type == "Patient" %>
-    <%= link_to 'Back', patient_path(current_user.id), :class => "btn btn-mine" %>
-  <% else %>
-   	<%= link_to 'Back', doctor_path(current_user.id), :class => "btn btn-mine" %>
-	<% end %>
-<% end %>
 
 
