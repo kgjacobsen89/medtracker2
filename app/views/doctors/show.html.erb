@@ -50,8 +50,8 @@
 
                       <!-- List group -->
                       <ul class="list-group">
-                        <li class="list-group-item"><%= p.sex %></li>
-                        <li class="list-group-item"><%= p.date_of_birth %></li>
+                        <li class="list-group-item">Sex:<div class="pull-right"><%= p.sex %></div></li>
+                        <li class="list-group-item">Date of Birth:<div class="pull-right"><%= p.date_of_birth %></div></li>
                       </ul>
                     </div>
                 <% end %>
@@ -92,7 +92,7 @@
                 <br>
                   <div class="row">
                       <div class="col-xs-12">
-                          <ul class="list-unstyled">
+                          <ul id="meds" class="list-unstyled">
                             <% @doctor.patient_medications.each do |m| %>
                               <li style="padding-top:15px"><%= m.medication.name.capitalize %>
                               <%= link_to "View Medication", medication_path(m), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;font-size:13px" %></li>
@@ -124,4 +124,37 @@
 
   </div>
 <!-- /.container -->
-                  
+
+<script>
+
+var mylist = $('#meds');
+var listitems = mylist.children('li').get();
+listitems.sort(function(a, b) {
+   return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+})
+$.each(listitems, function(idx, itm) { mylist.append(itm);
+});
+
+// uniqueLi = {};
+
+// $("#meds li").each(function () {
+//   var thisVal = $(this).text();
+
+//   if ( !(thisVal in uniqueLi) ) {
+//     uniqueLi[thisVal] = "";
+//   } else {
+//     $(this).remove();
+//   }
+// })
+
+var seen = {};
+$('#meds li').each(function() {
+  var txt = $(this).text();
+  if (seen[txt])
+      $(this).remove();
+  else
+      seen[txt] = true;
+});
+
+
+</script>
