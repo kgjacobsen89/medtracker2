@@ -94,7 +94,7 @@
                       <div class="col-xs-12">
                           <ul id="meds" class="list-unstyled">
                             <% @doctor.patient_medications.each do |m| %>
-                              <li style="padding-top:15px"><%= m.medication.name.capitalize %>
+                              <li class="hidden" style="padding-top:15px"><%= m.medication.name.capitalize %>
                               <%= link_to "View Medication", medication_path(m), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;font-size:13px" %></li>
                             <% end %>
                           </ul>
@@ -151,10 +151,58 @@ var seen = {};
 $('#meds li').each(function() {
   var txt = $(this).text();
   if (seen[txt])
-      $(this).remove();
+      $(this).removeClass('hidden');
   else
       seen[txt] = true;
 });
 
+// function addToList() {
+//    var addit = true;
+//    $("#meds li").each(function()
+//    {
+//        if(output == $(this).text())
+//        { 
+//               addit = false;
+//        }
+//    });
+//    if(addit)
+//        $("#meds li").append("<li>"+output+"</li>");
+//  }
+// var seen = {};
+// var counter = {};
+// var length = $('#meds li').length;
+// console.log(length);
+// $('#meds li').each(function(i) {
+//   var txt = $(this).text();
+//   if (seen[txt]) {
+//       $(this).remove();
+//       counter[txt]++;
+//   }
+//   else {
+//       seen[txt] = true;
+//     counter[txt] = 1;
+//   }
+//   if (i==(length-1)){
+//     $.each(counter, function(i, val) {
+//       $('p#first').append('<p>'+i+': '+val+'</p>');
+//     });
+//   }
+// });
+
+// var seen='';
+//    $('#meds li').each(function(){
+//         var see=$(this).text();
+//         if(seen.match(see)){
+//             $(this).remove();}
+//         else{
+//             seen=seen+$(this).text();
+//         }
+//     });
+
+// $('#meds li').each(function () {
+//     if ($(this).next().is('li')) {
+//         $(this).next().remove();
+//     }
+// });
 
 </script>
