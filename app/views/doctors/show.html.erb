@@ -38,7 +38,7 @@
 
               <% if current_user %>
                 <% if current_user.type == 'Doctor' %>
-                   <% @doctor.patients.each do |p| %>
+                   <% @doctor.patients.sort { |a,b| a.name <=> b.name }.each do |p| %>
                     <div class="panel panel-default" style="margin-bottom:-1px">
                       <!-- Default panel contents -->
                       <div class="panel-heading" style="overflow:hidden;font-size:20px;padding-top:15px;overflow:hidden">

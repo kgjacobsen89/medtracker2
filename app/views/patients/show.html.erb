@@ -39,7 +39,7 @@
 
               <!-- Post Content -->
              <% @medications.each do |m| %>
-              <div class="panel panel-default" style="margin=bottom:-1px">
+              <div class="panel panel-default" style="margin-bottom:-1px">
                 <!-- Default panel contents -->
                  <% med = m.medication %>
                 <div class="panel-heading" style="overflow:hidden;font-size:20px;padding-top:15px;overflow:hidden"><strong> <%= med.name.capitalize %> </strong> <%= link_to "More Medication Info", medication_path(m), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;display:inline" %></div>

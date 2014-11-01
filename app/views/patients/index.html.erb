@@ -6,8 +6,8 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>First Name</th>
             <th>Last Name</th>
+            <th>First Name</th>
             <th>Sex</th>
             <th>Date of Birth</th>
             <th>Phone Number</th>
@@ -15,10 +15,10 @@
         </thead>
 
         <tbody>
-          <% @doctor.patients.each do |patient| %>
+          <% @doctor.patients.sort { |a,b| a.name <=> b.name }.each do |patient| %>
             <tr>
-              <td><%= patient.first_name %></td>
               <td><%= patient.last_name %></td>
+              <td><%= patient.first_name %></td>
               <td><%= patient.sex %></td>
               <td><%= patient.date_of_birth %></td>
               <td><%= patient.phone_number %></td>
