@@ -94,9 +94,9 @@
                   <div class="row">
                       <div class="col-xs-12">
                           <ul id="meds" class="list-unstyled">
-                            <% @doctor.patient_medications.each do |m| %>
-                              <li class="hidden" style="padding-top:15px"><%= m.medication.name.capitalize %>
-                              <%= link_to "View Medication", medication_path(m), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;font-size:13px" %></li>
+                            <% @doctor.patient_medications.collect {|med| [med.medication.name.capitalize, med.medication.id]}.uniq.each do |x, y| %>
+                              <li style="padding-top:15px"><%= x %>
+                              <%= link_to "View Medication", medication_path(y), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;font-size:13px" %></li>
                             <% end %>
                           </ul>
                       </div>
@@ -148,14 +148,14 @@ $.each(listitems, function(idx, itm) { mylist.append(itm);
 //   }
 // })
 
-var seen = {};
-$('#meds li').each(function() {
-  var txt = $(this).text();
-  if (seen[txt])
-      $(this).removeClass('hidden');
-  else
-      seen[txt] = true;
-});
+// var seen = {};
+// $('#meds li').each(function() {
+//   var txt = $(this).text();
+//   if (seen[txt])
+//       $(this).removeClass('hidden');
+//   else
+//       seen[txt] = true;
+// });
 
 // function addToList() {
 //    var addit = true;
