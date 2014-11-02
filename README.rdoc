@@ -4,19 +4,18 @@ Does your dentist know what your GP prescribed you? Does your out-of-network sur
 
 MedTracker 2.0, originally built using MongoDB, but moved to PostgreSQL, is designed to answer these questions. Not only does it allow you to list medications you have previously or are currently taken, but also you can allow your doctors to access your medication history and communicate more easily with your other healthcare providers regarding your treatment plans. 
 
-* Ruby version 
-Ruby '2.1.2'
+Data Modeling
+* ![alt tag](https://cloud.githubusercontent.com/assets/8021632/4876516/61d0371c-62c8-11e4-82fd-da63395c8ddf.JPG)
 
-* System dependencies
-Rails '4.1.5' 
+Wireframes
+* ![alt tag](https://cloud.githubusercontent.com/assets/8021632/4876515/61cb353c-62c8-11e4-94ca-298aff9a89cd.JPG)
 
-* Deployment instructions
-Heroku
+Ruby version 
+* Ruby '2.1.2'
 
-* ...
+System dependencies
+* Rails '4.1.5' 
 
-* Data Modeling
-![alt tag](https://cloud.githubusercontent.com/assets/8021632/4876516/61d0371c-62c8-11e4-82fd-da63395c8ddf.JPG)
+Deployment instructions
+* Heroku
 
-* Wireframes
-![alt tag](https://cloud.githubusercontent.com/assets/8021632/4876515/61cb353c-62c8-11e4-94ca-298aff9a89cd.JPG)
