@@ -15,3 +15,8 @@ Heroku
 
 * ...
 
+* Data Modeling
+![alt tag](https://cloud.githubusercontent.com/assets/8021632/4876516/61d0371c-62c8-11e4-82fd-da63395c8ddf.JPG)
+
+* Wireframes
+![alt tag](https://cloud.githubusercontent.com/assets/8021632/4876515/61cb353c-62c8-11e4-94ca-298aff9a89cd.JPG)
