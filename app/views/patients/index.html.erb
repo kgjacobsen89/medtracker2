@@ -1,6 +1,8 @@
+<br>
 <% if current_user %>
   <% if current_user.type == 'Doctor' %>
-    <h1>Listing Patients</h1>
+    <h1 style="display:inline">Listing Patients</h1> 
+    <%= link_to 'My Profile', doctor_path(current_user), :class => "btn btn-mine pull-right", :style => "margin-top:5px;display:inline"%><br><br>
 
     <div class="table-responsive">
       <table class="table table-hover">
@@ -34,5 +36,3 @@
 <% else %>
 
 <% end %>
-
-<%= link_to 'My Profile', doctor_path(current_user), :class => "btn btn-mine" %>
