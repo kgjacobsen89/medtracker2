@@ -16,6 +16,8 @@
         <% else %>
           <%= link_to 'Back', doctor_path(current_user.id), :class => "btn btn-mine pull-right", :style => "display:inline" %><br><br>
         <% end %>
+      <% else %>
+        <%= link_to 'Back', medications_path, :class => "btn btn-mine pull-right", :style => "display:inline" %><br><br>
       <% end %>
         <div class="well">
           <h4>Search Similar Medications</h4>
