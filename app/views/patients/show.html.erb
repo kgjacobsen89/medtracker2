@@ -51,9 +51,11 @@
                     <% end %>
                   <% end %>
                 </div>
+                <% if current_user.type == 'Patient' %>
                 <div class="panel-body">
                   <%= link_to "Edit Prescription", edit_patient_medication_path(m), :class => "btn btn-mine" %>
                 </div>
+                <% end %>
 
                 <!-- List group -->
                 <ul class="list-group">
