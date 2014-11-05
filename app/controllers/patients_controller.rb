@@ -13,6 +13,7 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
     @doctors = Doctor.find(@patient.doctor_ids)
     @medications = PatientMedication.find(@patient.patient_medication_ids)
+    @drugs = Medication.all.uniq {|x| x.name}
   end
 
   def new
