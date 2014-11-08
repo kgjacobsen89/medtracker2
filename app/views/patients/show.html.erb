@@ -46,7 +46,7 @@
                   <% @drugs.each do |x| %>
                     <% if x.name.capitalize == med.name.capitalize %>
                       <%= link_to "More Medication Info", medication_path(x), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;display:inline" %>
-                    <% elsif x = nil %>
+                    <% elsif x == nil %>
                       <%= link_to "More Medication Info", medication_path(m), :class => "btn btn-mine pull-right", :style => "margin-top:-5px;display:inline" %>
                     <% end %>
                   <% end %>

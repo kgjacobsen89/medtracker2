@@ -47,6 +47,11 @@ gem 'httparty'
 
 gem 'pillboxr'
 
+#for angularjs to work nicely on rails
+gem 'angularjs-rails' # Make Angular play nice
+gem 'angular-rails-templates' # Make Angular templates available
+gem 'active_model_serializers' # Allows you to customize the JSON output, essential for our API JSON
+
 #To send welcome emails
 gem 'figaro'
 gem 'actionmailer', '~> 4.1.5'
